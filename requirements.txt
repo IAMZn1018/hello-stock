@@ -6,3 +6,7 @@ python-dotenv==1.0.0
 pillow==10.1.0
 httpx==0.25.1
 pywencai==0.13.1
+lxml
+pandas
+numpy
+requests

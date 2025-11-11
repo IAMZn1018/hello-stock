@@ -1,102 +1,266 @@
-# Hello Stock - AI股票分析助手
+# 股票综合分析系统 🚀
 
-基于大模型的股票分析和交易助手系统，具有以下核心功能：
+一个完全自动化的股票分析系统，整合了问财诊股数据、东方财富K线数据和技术分析，帮助你快速评估股票投资价值。
 
-1. 股票日线图片识别与买卖建议
-2. 对话记录持久化与上下文检索
-3. 风险控制与止损提醒
-4. 每日市场分析与次日预案
-5. 板块轮动监控与提醒
+## ✨ 核心功能
 
-## 功能模块
+### 📊 自动数据获取
+- ✅ **问财诊股数据**：基本面、资金面、消息面完整数据
+- ✅ **K线历史数据**：自动获取东方财富历史股价
+- ✅ **技术指标计算**：MA/MACD/KDJ/RSI/BOLL全自动
 
-- **图像识别模块**: 使用Qwen-Max识别股票日线图片
-- **对话管理模块**: 管理用户对话历史和上下文
-- **风险控制模块**: 实现止损和风险提示功能
-- **市场分析模块**: 分析强势板块和制定投资预案
-- **轮动监控模块**: 监控板块轮动并提供提醒
+### 🎯 智能分析
+- ✅ **多维度评分**：技术面40% + 资金面30% + 基本面20% + 消息面10%
+- ✅ **风险评估**：自动判断风险等级（低/中/高）
+- ✅ **操作建议**：买入/持有/观望/规避
+- ✅ **关键要点**：自动提取机会和风险
 
-## 技术栈
+### 📈 实用工具
+- ✅ **单股分析**：3行代码完成完整分析
+- ✅ **批量分析**：同时分析多只股票并排名
+- ✅ **报告生成**：详细/简要报告可选
+- ✅ **数据导出**：支持JSON格式导出
 
-- Python 3.8+
-- FastAPI (Web框架)
-- SQLite (数据存储)
-- Qwen-Max (大模型API)
+---
 
-## 项目结构
+## 🚀 快速开始
+
+### 方法1：运行快速分析脚本（最简单）
+
+```bash
+# 1. 打开 快速分析.py，修改股票代码和名称
+# 2. 运行
+python 快速分析.py
+```
+
+### 方法2：批量分析多只股票
+
+```bash
+# 1. 打开 批量分析.py，添加你的自选股
+# 2. 运行
+python 批量分析.py
+```
+
+### 方法3：自己写代码（推荐）
+
+```python
+from app.utils import StockComprehensiveAnalyzer
+
+# 创建分析器
+analyzer = StockComprehensiveAnalyzer()
+
+# 分析股票
+result = analyzer.analyze_stock("002115", "三维通信")
+
+# 查看报告
+report = analyzer.generate_report(result)
+print(report)
+```
+
+---
+
+## 📖 详细文档
+
+查看 [USAGE.md](USAGE.md) 获取完整使用指南，包括：
+- 详细使用方法
+- 常见使用场景
+- 参数说明
+- 故障排除
+- 进阶用法
+
+---
+
+## 📊 分析报告示例
+
+```
+================================================================================
+股票综合分析报告 - 三维通信(002115)
+================================================================================
+
+【综合评分】69.0 分
+风险等级：中等风险
+操作建议：持有
+
+【分项评分】
+  技术面: 65.0 分
+  资金面: 70.0 分
+  基本面: 75.0 分
+  消息面: 70.0 分
+
+【关键要点】
+  ○ 均线纠缠，震荡整理
+  ○ 包含主力资金流向数据
+  ○ 包含完整财务数据
+
+【机会提示】
+  ✓ KDJ金叉向上
+
+【技术分析详情】
+  收盘价: 11.64 元
+  MA5: 11.50  MA10: 11.51  MA20: 11.70  MA60: 11.07
+  MACD: DIF 0.034  DEA 0.07  
+  KDJ: K 45.64  D 33.92  J 69.08
+  支撑位: 8.30 元  压力位: 14.85 元
+```
+
+---
+
+## 🛠️ 项目结构
 
 ```
 hello-stock/
-├── app/                  # 主应用目录
-│   ├── core/             # 核心模块
-│   ├── database/         # 数据库相关
-│   ├── models/           # 数据模型
-│   ├── routers/          # API路由
-│   ├── schemas/          # 数据验证模型
-│   └── utils/            # 工具函数
-├── .env                  # 环境变量配置
-├── app.py                # 应用入口
-├── requirements.txt      # 依赖包列表
-└── README.md             # 项目说明文档
+├── app/utils/                          # 核心工具模块
+│   ├── wencai_api.py                   # 问财API
+│   ├── eastmoney_api.py                # 东方财富API
+│   ├── technical_analysis.py           # 技术分析
+│   └── stock_comprehensive_analyzer.py # 综合分析器
+│
+├── 快速分析.py                         # 单股分析脚本
+├── 批量分析.py                         # 批量分析脚本
+│
+├── example_comprehensive_analysis.py   # 综合分析示例
+├── example_technical_analysis.py       # 技术分析示例
+├── example_eastmoney_api.py           # API使用示例
+│
+├── USAGE.md                            # 详细使用文档
+└── README.md                           # 本文件
 ```
 
-## 快速开始
+---
 
-1. 安装依赖：
-   ```bash
-   pip install -r requirements.txt
-   ```
+## 📦 依赖安装
 
-2. 配置环境变量：
-   ```bash
-   cp .env.example .env
-   # 编辑 .env 文件，填入你的 Qwen API Key
-   ```
-
-3. 启动应用：
-   ```bash
-   python app.py
-   ```
-
-4. 访问 API 文档：
-   ```
-   http://localhost:8000/docs
-   ```
-
-## API 接口说明
-
-### 股票分析接口
-- `POST /api/stock/analyze-image` - 分析股票日线图片
-- `POST /api/stock/rules/` - 创建交易规则
-- `GET /api/stock/rules/{user_id}` - 获取用户交易规则
-
-### 对话管理接口
-- `POST /api/chat/sessions/` - 创建聊天会话
-- `POST /api/chat/messages/` - 发送聊天消息
-- `POST /api/chat/query/` - 智能对话
-- `GET /api/chat/sessions/{user_id}/history` - 获取聊天历史
-
-### 风险控制接口
-- `POST /api/risk/alerts/` - 创建风险提醒
-- `GET /api/risk/alerts/{user_id}` - 获取用户风险提醒
-- `POST /api/risk/check-stop-loss` - 检查止损条件
-- `POST /api/risk/check-market-risk` - 检查市场风险
-
-### 市场分析接口
-- `POST /api/market/analysis/` - 创建市场分析报告
-- `GET /api/market/analysis/latest` - 获取最新市场分析
-- `POST /api/market/daily-analysis` - 执行每日市场分析
-- `POST /api/market/check-sector-rotation` - 检查板块轮动
+```bash
+pip install -r requirements.txt
 ```
 
-### 爬虫列表
-- `https://yuanchuang.10jqka.com.cn/djsjdp_list/` - 每日早中收复盘+龙虎榜复盘
-- `https://yuanchuang.10jqka.com.cn/mrnxgg_list/` - 涨停雷达
-- `https://news.10jqka.com.cn/realtimenews.html` - 快讯
+主要依赖：
+- `pywencai` - 问财数据接口
+- `pandas` - 数据处理
+- `numpy` - 数值计算
+- `requests` - HTTP请求
+- `lxml` - HTML解析
 
-### mysql配置
-ip: 192.168.31.254
-port: 49176
-user: root
-password: Cx1028.+
-database: hello-stock
+---
+
+## 🎯 使用场景
+
+### 1. 快速筛选股票
+从自选股中找出高分股票：
+```python
+analyzer = StockComprehensiveAnalyzer()
+for code, name in my_stocks:
+    result = analyzer.analyze_stock(code, name)
+    if result['summary']['overall_score'] >= 70:
+        print(f"⭐ {name}: {result['summary']['overall_score']}分")
+```
+
+### 2. 监控特定股票
+定时监控股票变化：
+```python
+result = analyzer.analyze_stock("002115", "三维通信")
+if result['summary']['recommendation'] == "买入":
+    print("🚨 买入信号！")
+```
+
+### 3. 行业对比分析
+对比同行业股票：
+```python
+banks = [("000001", "平安银行"), ("600036", "招商银行")]
+for code, name in banks:
+    result = analyzer.analyze_stock(code, name)
+    print(f"{name}: {result['summary']['overall_score']}分")
+```
+
+---
+
+## 📈 评分体系
+
+### 综合评分（0-100分）
+- **75分以上**：买入 - 多维度指标良好
+- **60-75分**：持有 - 整体稳健
+- **45-60分**：观望 - 存在不确定性
+- **45分以下**：规避 - 风险较高
+
+### 各维度权重
+- **技术面**（40%）：均线/MACD/KDJ/RSI
+- **资金面**（30%）：主力资金/北向资金/DDE
+- **基本面**（20%）：财务数据/估值指标
+- **消息面**（10%）：新闻/概念/题材
+
+---
+
+## 💡 提示
+
+1. **数据准确性**：建议在交易日白天运行，数据最新
+2. **运行时间**：首次运行需要下载数据，约10-30秒
+3. **批量分析**：建议每次分析间隔1-2秒
+4. **股票代码**：使用6位代码，如"002115"
+5. **结果保存**：可导出为JSON格式供后续分析
+
+---
+
+## 📞 常见问题
+
+### Q: 分析一只股票需要多久？
+A: 首次分析约10-30秒，包含：
+- 问财诊股数据获取（5-10秒）
+- K线数据获取（2-5秒）
+- 技术分析计算（1-2秒）
+
+### Q: 能分析哪些股票？
+A: 支持A股所有上市股票（沪深两市）
+
+### Q: 数据从哪里来？
+A: 
+- 诊股数据：同花顺问财
+- K线数据：东方财富
+- 技术分析：本地计算
+
+### Q: 评分如何计算？
+A: 综合技术面、资金面、基本面、消息面四个维度加权计算
+
+### Q: 能否实时监控？
+A: 可以，参考示例中的监控代码
+
+---
+
+## 🔗 相关链接
+
+- 东方财富网：http://www.eastmoney.com/
+- 同花顺问财：http://www.iwencai.com/
+- 涨停雷达：https://yuanchuang.10jqka.com.cn/mrnxgg_list/
+
+---
+
+## 📝 更新日志
+
+### v1.0.0 (2025-11-11)
+- ✅ 初始版本发布
+- ✅ 完整的数据获取功能
+- ✅ 多维度分析评分
+- ✅ 自动化报告生成
+- ✅ 批量分析支持
+
+---
+
+## 📄 许可证
+
+MIT License
+
+---
+
+## 🙏 致谢
+
+感谢以下开源项目：
+- pywencai - 问财数据接口
+- pandas - 数据分析
+- numpy - 科学计算
+
+---
+
+## ⚠️ 免责声明
+
+本系统仅供学习和研究使用，不构成任何投资建议。
+股市有风险，投资需谨慎。
+使用本系统产生的任何投资决策及结果，由使用者自行承担。
