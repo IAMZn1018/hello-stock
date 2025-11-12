@@ -2,11 +2,11 @@
 快速分析脚本 - 最简单的使用方式
 直接运行这个文件即可！
 """
-from app.utils import StockComprehensiveAnalyzer
+from app.utils.stock_comprehensive_analyzer import StockComprehensiveAnalyzer
 
 # ============ 在这里修改你要分析的股票 ============
-STOCK_CODE = "603363"
-STOCK_NAME = "傲农生物"
+STOCK_CODE = "601059"
+STOCK_NAME = "信达证券"
 # ==============================================
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 """
 批量分析脚本 - 分析多只股票并排名
 """
-from app.utils import StockComprehensiveAnalyzer
+from app.utils.stock_comprehensive_analyzer import StockComprehensiveAnalyzer
 import time
 
 # ============ 在这里添加你的自选股 ============
