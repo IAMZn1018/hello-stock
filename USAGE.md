@@ -342,7 +342,7 @@ def main():
         result = analyzer.analyze_stock(code, name)
         
         # 生成报告
-        report = analyzer.generate_report(result, detailed=False)
+        report = analyzer.generate_report(result, detailed=True)
         print(report)
 
 if __name__ == "__main__":

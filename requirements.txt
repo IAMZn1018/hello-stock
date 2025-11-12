@@ -10,3 +10,4 @@ lxml
 pandas
 numpy
 requests
+dotenv

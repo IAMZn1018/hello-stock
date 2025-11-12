@@ -25,7 +25,7 @@ class DeepSeekAPI:
         """
         self.api_key = api_key or os.getenv("DEEPSEEK_API_KEY")
         self.api_url = "https://api.deepseek.com/v1/chat/completions"
-        self.timeout = 60.0
+        self.timeout = 180
         
         if not self.api_key:
             print("警告: 未配置 DeepSeek API 密钥")

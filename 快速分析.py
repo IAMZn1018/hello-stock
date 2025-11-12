@@ -5,8 +5,8 @@
 from app.utils import StockComprehensiveAnalyzer
 
 # ============ 在这里修改你要分析的股票 ============
-STOCK_CODE = "301308"
-STOCK_NAME = "江波龙"
+STOCK_CODE = "603363"
+STOCK_NAME = "傲农生物"
 # ==============================================
 
 if __name__ == "__main__":

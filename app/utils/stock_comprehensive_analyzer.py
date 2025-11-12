@@ -6,7 +6,7 @@ from typing import Dict, Optional
 from .wencai_api import WenCaiAPI
 from .eastmoney_api import EastMoneyAPI
 from .technical_analysis import StockAnalyzer
-from app.core.qwen_api import QwenAPI
+from app.core.deepseek_api import DeepSeekAPI
 
 
 class StockComprehensiveAnalyzer:
@@ -24,7 +24,7 @@ class StockComprehensiveAnalyzer:
         self.technical_analyzer = StockAnalyzer()
         self.use_ai = use_ai
         if use_ai:
-            self.qwen_api = QwenAPI()
+            self.deepseek_api = DeepSeekAPI()
     
     def analyze_stock(self, stock_code: str, stock_name: str = None, kline_days: int = 120) -> Dict:
         """
@@ -137,7 +137,7 @@ class StockComprehensiveAnalyzer:
         stock_data = self._format_data_for_ai(diagnosis, technical)
         
         # 调用大模型
-        result = self.qwen_api.analyze_stock_data(stock_data)
+        result = self.deepseek_api.analyze_stock_data(stock_data)
         
         if result['success'] and result['data']:
             ai_result = result['data']
@@ -152,7 +152,7 @@ class StockComprehensiveAnalyzer:
                 "opportunities": ai_result.get("opportunities", []),
                 "score_details": ai_result.get("score_details", {}),
                 "ai_analysis": ai_result.get("analysis", ""),
-                "generated_by": "AI"
+                "generated_by": "DeepSeek AI"
             }
             
             return summary
