@@ -2,11 +2,22 @@
 快速分析脚本 - 最简单的使用方式
 直接运行这个文件即可！
 """
+import os
+from dotenv import load_dotenv
+
+# 加载环境变量
+# 尝试从项目根目录加载.env文件
+load_dotenv()
+
+# 如果没有找到，则尝试从agentscope_project目录加载
+if not os.getenv("DEEPSEEK_API_KEY"):
+    load_dotenv("./agentscope_project/.env")
+
 from app.utils.stock_comprehensive_analyzer import StockComprehensiveAnalyzer
 
 # ============ 在这里修改你要分析的股票 ============
-STOCK_CODE = "601059"
-STOCK_NAME = "信达证券"
+STOCK_CODE = "600348"
+STOCK_NAME = "华阳股份"
 # ==============================================
 
 if __name__ == "__main__":
